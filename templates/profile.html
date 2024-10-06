@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=IBM+Plex+Mono:wght@700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/98cd7755e9.js" crossorigin="anonymous"></script>
+
+  <style>
+    b {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 20px;
+      margin: 0.7rem;
+    }
+
+    .pdet>.left>p,
+    .pdet>.right>p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 17px;
+    }
+
+    .pdet {
+      display: flex;
+      justify-content: center;
+      margin: 2.5rem;
+    }
+
+    .pdet>.left,
+    .pdet>.right {
+      padding: 1.5rem;
+    }
+
+    .acc {
+      width: 20%;
+      margin: 2rem;
+    }
+
+    .acc>form {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .bp {
+      width: 20%;
+      margin: 2rem;
+    }
+
+    .bp>form {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    hr {
+      border-top: 5px dotted black;
+      width: 10%;
+      margin: 6rem auto;
+    }
+
+    .sugar {
+      width: 20%;
+      margin: 2rem;
+    }
+
+    .sugar>form {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .testr {
+      width: 20%;
+      margin: 2rem;
+    }
+
+    .testr>form {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- navbar -->
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="http://localhost:8080/">BeHealthy</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Self Diagnosis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/verify">Test Verification</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user_account">Account</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Appointment
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/doctor">Doctor</a></li>
+              <li><a class="dropdown-item" href="/hospital">Hospital</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Personal Details  -->
+  <h2 style="margin: 2rem auto; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 55px;">Personal
+    Details</h2>
+  <div class="pdet">
+    <div class="left">
+      <p><b>Name:</b>{{todo.name}}</p>
+      <p><b>Email:</b>{{todo.email_id}}</p>
+      <p><b>Phone Number:</b>{{todo.phone_number}}</p>
+      <p><b>Aadhar:</b>{{todo.aadhar}}</p>
+    </div>
+    <div class="right">
+      <p><b>Birth Date:</b>{{todo.birth_date}}</p>
+      <p><b>Blood Group:</b>{{todo.blood_grp}}</p>
+      <p><b>Weight:</b>{{todo.weight}} kg</p>
+      <p><b>Height:</b>{{todo.height}} cm</p>
+    </div>
+  </div>
+
+
+  <hr>
+  <!-- Account Edit  -->
+
+  <div class="acc">
+    <h3 class="mb-5" style="margin: 2rem auto; font-family: 'Cormorant Garamond', serif; font-size: 55px;">Edit
+      Account</h3>
+    <form action="/edit/{{todo.sno}}" method="POST">
+      <div class="mb-3">
+        <label class="form-label mb-4">Enter Value</label>
+        <input type="number" class="form-control mb-4 shadow" name="val" id="val" aria-describedby="emailHelp" />
+        <select name="role" class="form-select form-select" aria-label=".form-select-sm example">
+          <option selected>Update Weight / Height / Phone No</option>
+          <option name="role" id="role" value="weight">Weight</option>
+          <option name="role" id="role" value="height">Height</option>
+          <option name="role" id="role" value="ph_num">Phone Number</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-dark" style="margin: 2rem 6.78vw;">Submit</button>
+    </form>
+  </div>
+
+  <hr>
+  <!-- Blood Pressure  -->
+
+  <div class="bp">
+    <h3 class="mb-5" style="margin: 3rem auto; font-family: 'Cormorant Garamond', serif; font-size: 55px; width: 120%;">
+      Add Blood
+      Pressure</h3>
+    <form action="/add_bp/{{todo.sno}}" method="POST">
+      <div class="mb-4">
+        <label class="form-label mb-3">Systolic(upper level)</label>
+        <input type="number" class="form-control shadow" name="up" id="up" aria-describedby="emailHelp" />
+      </div>
+      <div class="mb-4">
+        <label class="form-label mb-3">Diastolic(lower level)</label>
+        <input type="number" class="form-control shadow" name="low" id="low" aria-describedby="emailHelp" />
+      </div>
+      <button type="submit" class="btn btn-dark" style="margin: 2rem 6.78vw;">Submit</button>
+    </form>
+  </div>
+
+  <img src="/press_plot/{{todo.sno}}" alt="my plot" style="display:block ; margin:0 auto; margin-top: 2rem;" />
+  <br />
+
+  <hr>
+  <!-- Sugar  -->
+
+  <div class="sugar">
+    <h3 class="mb-5" style=" font-family: 'Cormorant Garamond', serif; font-size: 55px;">Add Sugar
+    </h3>
+    <form action="/add_sugar/{{todo.sno}}" method="POST">
+      <div class="mb-4">
+        <label class="form-label mb-3">After meal</label>
+        <input type="number" class="form-control mb-4 shadow" name="up" id="up" aria-describedby="emailHelp" />
+      </div>
+      <div class="mb-4">
+        <label class="form-label mb-3">Fasting</label>
+        <input type="number" class="form-control mb-4 shadow" name="low" id="low" aria-describedby="emailHelp" />
+      </div>
+      <button type="submit" class="btn btn-dark" style="margin: 2rem 6.78vw;">Submit</button>
+    </form>
+  </div>
+
+  <img src="/sugar_plot/{{todo.sno}}" alt="my plot" style="display:block ; margin:0 auto; margin-top: 2rem;" />
+
+  <hr>
+  <!-- New Test Report  -->
+
+  <div class="testr">
+    <h3 class="mb-5" style=" font-family: 'Cormorant Garamond', serif; font-size: 55px;">Upload New Test Report</h3>
+    <form action="/upload/{{todo.sno}}" method="POST" enctype="multipart/form-data">
+      <label class="form-label mb-4">Test Report </label>
+      <input class="mb-5" type="file" name="file1" />
+      <input class="mb-5" type="text" name="role" id="role" placeholder="Enter file name" />
+      <button type="submit" class="btn btn-dark" style="margin: 1rem 3.78vw;">Submit</button>
+    </form>
+  </div>
+
+  <hr>
+
+  <!-- previous reports  -->
+
+
+  <h3 class="mb-5" style=" font-family: 'Cormorant Garamond', serif; font-size: 55px; text-align: center;">All Previous
+    Test Reports</h3>
+  <table class="table striped" style="width: 60%; margin: 2rem auto;">
+    <thead>
+      <tr bgcolor="grey">
+        <th scope="col">#</th>
+        <th scope="col">NAME</th>
+        <th scope="col">Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in test %}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{i.name}}</td>
+        <td>
+          <button type="button" class="btn btn-dark" href="/download/{{i.sno}}">
+            <a href="/download/{{i.sno}}"><i class="fa-solid fa-download"></i></a>
+          </button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Montaga&family=Montserrat:wght@800&family=Playfair+Display:wght@500&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <style>
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 37px;
+      text-align: center;
+      /* margin: 3rem auto; */
+    }
+
+    h3 {
+      font-family: 'Playfair Display', serif;
+      color: #303234;
+      font-size: 32px;
+      margin: 2rem auto;
+    }
+
+    .select {
+      width: 75%;
+      margin: 0 2rem;
+    }
+
+    li,
+    a {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      margin: 0 10px;
+    }
+
+    th {
+      font-family: 'Arvo', serif;
+    }
+
+    b,
+    i,
+    td {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      line-height: 1.7;
+      font-weight: 100;
+    }
+
+    table {
+      border: black solid 1px;
+    }
+
+    .custom-container {
+            border: 1px solid #ccc;
+            background-color: #303430; /* Light grey color */
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="http://localhost:3000/">BeHealthy</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/disease">Self Diagnosis</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Appointment
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item item1" href="/doctor">Doctor</a></li>
+              <li><a class="dropdown-item item2" href="/hospital">Hospital</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Container -->
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- left container -->
+
+      <div class="col-3">
+        <h1 class="mt-5 mb-5 animate__animated animate__bounceInRight">Select Your Symptoms</h1>
+        <form action="/form" method="POST">
+          <select name="Sym1"
+            class="form-select form-select mb-5 select shadow p-2 animate__animated animate__bounceInRight">
+            <option selected>Select Symptom 1</option>
+            {% for i in lst%}
+            <option name="Sym1" id="Sym1" value="{{i}}">{{i}}</option>
+            {% endfor %}
+          </select>
+
+          <select name="Sym2"
+            class="form-select form-select mb-5 select shadow p-2 animate__animated animate__bounceInRight">
+            <option selected>Select Symptom 2</option>
+            {% for i in lst%}
+            <option name="Sym2" id="Sym2" value="{{i}}">{{i}}</option>
+            {% endfor %}
+          </select>
+
+          <select name="Sym3"
+            class="form-select form-select mb-5 select shadow p-2 animate__animated animate__bounceInRight">
+            <option selected>Select Symptom 3</option>
+            {% for i in lst%}
+            <option name="Sym3" id="Sym3" value="{{i}}">{{i}}</option>
+            {% endfor %}
+          </select>
+
+          <select name="Sym4"
+            class="form-select form-select mb-5 select shadow p-2 animate__animated animate__bounceInRight">
+            <option selected>Select Symptom 4</option>
+            {% for i in lst%}
+            <option name="Sym4" id="Sym4" value="{{i}}">{{i}}</option>
+            {% endfor %}
+          </select>
+
+          <select name="Sym5"
+            class="form-select form-select mb-5 select shadow p-2 animate__animated animate__bounceInRight">
+            <option selected>Select Symptom 5</option>
+            {% for i in lst%}
+            <option name="Sym5" id="Sym5" value="{{i}}">{{i}}</option>
+            {% endfor %}
+          </select>
+
+          <select name="Sym6"
+            class="form-select form-select mb-5 select shadow p-2 animate__animated animate__bounceInRight">
+            <option selected>Select Symptom 6</option>
+            {% for i in lst%}
+            <option name="Sym6" id="Sym6" value="{{i}}">{{i}}</option>
+            {% endfor %}
+          </select>
+          <button type="submit" class="btn btn-dark btn-lg shadow-sm" style="margin:2rem 9rem;">Submit</button>
+        </form>
+      </div>
+
+      <!-- Right Container -->
+
+      <div class="col-7" style="width: 60%; margin: 0 auto;">
+        <h3 class="mt-5 mb-5 ">Disease Detected:</h3>
+        {% if pred=='' %}
+        <div class="alert alert-warning" role="alert">
+          <i>I am sorry, I couldn't predict your disease on the basis of your
+            given information. We recommend you to seek a doctor's attention.</i>
+        </div>
+        {% else %}
+        <b><i>{{pred}}</i></b>
+        {% endif %}
+        <br />
+
+        <div class="container">
+          <h3 class="mb-4">Description of the Disease:</h3>
+          {% if desp!=None %}
+          <b><i>{{desp}}</i></b>
+          {% endif %}
+          <br />
+        </div>
+
+        <div class="container">
+          <h3 class="mb-4">Precautions:</h3>
+          {% if precaution!=None %}
+          <i><b>
+              {{precaution[0]}}, {{precaution[1]}}, {{precaution[2]}}
+              {{precaution[3]}}
+            </b></i>
+          {% endif %}
+        <br />
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
