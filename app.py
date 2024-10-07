@@ -83,4 +83,4 @@ def form():
     return render_template('disease.html', lst=lst, pred=pred, precaution=precaution, desp=desp, lst3=lst3)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8080)
+    app.run(debug=True, port=10000)
