@@ -28,7 +28,8 @@ def pred(X):
     
     if predicted_index in disease_classes:
         predicted_disease = disease_classes[predicted_index]
-        return predicted_disease, prediction[0][predicted_index]  # Return disease and confidence
+        confidence = prediction[0][predicted_index]
+        return predicted_disease, confidence  # Return disease and confidence
     else:
         return 'could not predict', 0  # Unknown prediction
 
