@@ -34,7 +34,7 @@ optree==0.13.0
 packaging==24.1
 pandas==2.2.3
 pillow==10.4.0
-protobuf== 3.19.6
+protobuf<4.24,>=3.19.6
 Pygments==2.18.0
 pyparsing==3.1.4
 python-dateutil==2.9.0.post0
