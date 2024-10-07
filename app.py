@@ -59,7 +59,12 @@ def form():
     Sym4 = request.form['Sym4']
     Sym5 = request.form['Sym5']
     Sym6 = request.form['Sym6']
+
     
+    
+    if Sym1 == "Select Symptom 1":
+        return render_template('disease.html', lst=lst , pred="Please select at least one valid symptom", precaution="None", desp="Not Available",confidence=0)
+
     lst2 = np.zeros((1, len(lst)))
     for i in range(len(lst)):
         if Sym1 == lst[i] or Sym2 == lst[i] or Sym3 == lst[i] or Sym4 == lst[i] or Sym5 == lst[i] or Sym6 == lst[i]:
@@ -67,21 +72,20 @@ def form():
 
     lst3 = [Sym1, Sym2, Sym3, Sym4, Sym5, Sym6]
     
-    pred, flag = test_model.pred(lst2)
+    pred, confidence = test_model.pred(lst2)
 
-    if flag:
-        precaution = test_model.precaution(pred)
-        desp = test_model.description(pred)
-    else:
-        precaution = None
-        desp = None
+
     
+    precaution = test_model.precaution(pred)
+    desp = test_model.description(pred)
     
     print(lst3)
     lst3 = [sym for sym in lst3 if sym != "Open this select menu"]
 
-    return render_template('disease.html', lst=lst, pred=pred, precaution=precaution, desp=desp, lst3=lst3)
-
+    return render_template('disease.html', lst=lst, pred=pred, precaution=precaution, desp=desp, lst3=lst3, confidence=confidence)
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
+
+
+
