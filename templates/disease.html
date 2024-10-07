@@ -161,11 +161,11 @@
         <h3 class="mt-5 mb-5 ">Disease Detected:</h3>
         {% if pred=='' %}
         <div class="alert alert-warning" role="alert">
-          <i>I am sorry, I couldn't predict your disease on the basis of your
-            given information. We recommend you to seek a doctor's attention.</i>
+          <i>Welcome! To help us assist you better, please select your symptoms from the list . Your input is essential for us to provide an accurate prediction. If you're feeling unwell, don't hesitate to consult a healthcare professional.</i>
         </div>
         {% else %}
         <b><i>{{pred}}</i></b>
+        <p>Confidence: {{ confidence * 100 }}%</p>
         {% endif %}
         <br />
 
@@ -181,7 +181,9 @@
           <h3 class="mb-4">Precautions:</h3>
           {% if precaution!=None %}
           <i><b>
-              {{precaution[0]}}, {{precaution[1]}}, {{precaution[2]}}
+              {{precaution[0]}}  
+              {{precaution[1]}}  
+              {{precaution[2]}}  
               {{precaution[3]}}
             </b></i>
           {% endif %}
@@ -198,3 +200,4 @@
 </body>
 
 </html>
+
