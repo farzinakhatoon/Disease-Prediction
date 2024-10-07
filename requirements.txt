@@ -13,11 +13,12 @@ fonttools==4.54.1
 gast==0.6.0
 google-pasta==0.2.0
 grpcio==1.66.2
-h5py==3.1.0 
+h5py==3.1.0  # Changed to a compatible version
 idna==3.10
 itsdangerous==2.2.0
 Jinja2==3.1.4
 joblib==1.4.2
+# Removed keras as it is now integrated in TensorFlow
 kiwisolver==1.4.7
 libclang==18.1.1
 Markdown==3.7
